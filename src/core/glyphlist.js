@@ -14,7 +14,7 @@
  */
 /* no-babel-preset */
 
-var getLookupTableFactory = require('../shared/util').getLookupTableFactory;
+import {getLookupTableFactory} from '../shared/util';
 
 var getGlyphsUnicode = getLookupTableFactory(function (t) {
   t['A'] = 0x0041;
@@ -4548,5 +4548,7 @@ var getDingbatsGlyphsUnicode = getLookupTableFactory(function (t) {
   t['.notdef'] = 0x0000;
 });
 
-exports.getGlyphsUnicode = getGlyphsUnicode;
-exports.getDingbatsGlyphsUnicode = getDingbatsGlyphsUnicode;
+export {
+  getGlyphsUnicode,
+  getDingbatsGlyphsUnicode
+}

@@ -14,7 +14,7 @@
  */
 /* globals module, process */
 
-module.exports = function isNodeJS() {
+export default function isNodeJS() {
   // NW.js is a browser context, but copies some Node.js objects; see
   // http://docs.nwjs.io/en/latest/For%20Users/Advanced/JavaScript%20Contexts%20in%20NW.js/#access-nodejs-and-nwjs-api-in-browser-context
   return typeof process === 'object' &&

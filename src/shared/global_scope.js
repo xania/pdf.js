@@ -14,7 +14,7 @@
  */
 /* globals module */
 
-module.exports =
+export default
   (typeof window !== 'undefined' && window.Math === Math) ? window :
   // eslint-disable-next-line no-undef
   (typeof global !== 'undefined' && global.Math === Math) ? global :

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-const globalScope = require('./global_scope');
+import globalScope from './global_scope';
+import isNodeJS from './is_node';
+
 
 // Skip compatibility checks for the extensions and if we already ran
 // this module.
@@ -21,14 +23,10 @@ if ((typeof PDFJSDev === 'undefined' ||
      !PDFJSDev.test('FIREFOX || MOZCENTRAL')) &&
     !globalScope._pdfjsCompatibilityChecked) {
 
-globalScope._pdfjsCompatibilityChecked = true;
-
 // In the Chrome extension, most of the polyfills are unnecessary.
 // We support down to Chrome 49, because it's still commonly used by Windows XP
 // users - https://github.com/mozilla/pdf.js/issues/9397
 if (typeof PDFJSDev === 'undefined' || !PDFJSDev.test('CHROME')) {
-
-const isNodeJS = require('./is_node');
 
 const hasDOM = typeof window === 'object' && typeof document === 'object';
 
@@ -121,7 +119,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.prototype.startsWith) {
     return;
   }
-  require('core-js/fn/string/starts-with');
+  // // require('core-js/fn/string/starts-with');
 })();
 
 // Provides support for String.prototype.endsWith in legacy browsers.
@@ -130,7 +128,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.prototype.endsWith) {
     return;
   }
-  require('core-js/fn/string/ends-with');
+  // // require('core-js/fn/string/ends-with');
 })();
 
 // Provides support for String.prototype.includes in legacy browsers.
@@ -139,7 +137,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.prototype.includes) {
     return;
   }
-  require('core-js/fn/string/includes');
+  // require('core-js/fn/string/includes');
 })();
 
 // Provides support for Array.prototype.includes in legacy browsers.
@@ -148,7 +146,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Array.prototype.includes) {
     return;
   }
-  require('core-js/fn/array/includes');
+  // require('core-js/fn/array/includes');
 })();
 
 // Provides support for Array.from in legacy browsers.
@@ -157,7 +155,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Array.from) {
     return;
   }
-  require('core-js/fn/array/from');
+  // require('core-js/fn/array/from');
 })();
 
 // Provides support for Object.assign in legacy browsers.
@@ -166,7 +164,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Object.assign) {
     return;
   }
-  require('core-js/fn/object/assign');
+  // require('core-js/fn/object/assign');
 })();
 
 // Provides support for Math.log2 in legacy browsers.
@@ -175,7 +173,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Math.log2) {
     return;
   }
-  Math.log2 = require('core-js/fn/math/log2');
+  // Math.log2 = // require('core-js/fn/math/log2');
 })();
 
 // Provides support for Number.isNaN in legacy browsers.
@@ -184,7 +182,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Number.isNaN) {
     return;
   }
-  Number.isNaN = require('core-js/fn/number/is-nan');
+  // Number.isNaN = // require('core-js/fn/number/is-nan');
 })();
 
 // Provides support for Number.isInteger in legacy browsers.
@@ -193,7 +191,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Number.isInteger) {
     return;
   }
-  Number.isInteger = require('core-js/fn/number/is-integer');
+  // Number.isInteger = // require('core-js/fn/number/is-integer');
 })();
 
 // Support: IE, Safari<8, Chrome<32
@@ -206,7 +204,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (globalScope.Promise) {
     return;
   }
-  globalScope.Promise = require('core-js/fn/promise');
+  // globalScope.Promise = // require('core-js/fn/promise');
 })();
 
 // Support: IE<11, Safari<8, Chrome<36
@@ -214,7 +212,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (globalScope.WeakMap) {
     return;
   }
-  globalScope.WeakMap = require('core-js/fn/weak-map');
+  // globalScope.WeakMap = // require('core-js/fn/weak-map');
 })();
 
 // Support: IE11
@@ -222,7 +220,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (globalScope.WeakSet) {
     return;
   }
-  globalScope.WeakSet = require('core-js/fn/weak-set');
+  // globalScope.WeakSet = // require('core-js/fn/weak-set');
 })();
 
 // Provides support for String.codePointAt in legacy browsers.
@@ -231,7 +229,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.codePointAt) {
     return;
   }
-  String.codePointAt = require('core-js/fn/string/code-point-at');
+  // String.codePointAt = // require('core-js/fn/string/code-point-at');
 })();
 
 // Provides support for String.fromCodePoint in legacy browsers.
@@ -240,7 +238,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.fromCodePoint) {
     return;
   }
-  String.fromCodePoint = require('core-js/fn/string/from-code-point');
+  // String.fromCodePoint = // require('core-js/fn/string/from-code-point');
 })();
 
 // Support: IE
@@ -248,7 +246,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (globalScope.Symbol) {
     return;
   }
-  require('core-js/es6/symbol');
+  // require('core-js/es6/symbol');
 })();
 
 } // End of !PDFJSDev.test('CHROME')
@@ -259,7 +257,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.prototype.padStart) {
     return;
   }
-  require('core-js/fn/string/pad-start');
+  // require('core-js/fn/string/pad-start');
 })();
 
 // Provides support for String.prototype.padEnd in legacy browsers.
@@ -268,7 +266,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (String.prototype.padEnd) {
     return;
   }
-  require('core-js/fn/string/pad-end');
+  // require('core-js/fn/string/pad-end');
 })();
 
 // Provides support for Object.values in legacy browsers.
@@ -277,7 +275,7 @@ const hasDOM = typeof window === 'object' && typeof document === 'object';
   if (Object.values) {
     return;
   }
-  Object.values = require('core-js/fn/object/values');
+  // Object.values = // require('core-js/fn/object/values');
 })();
 
 }
